@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <input type="text" id="site" placeholder="https://example.com">
+    <button onclick="go()">Fetch</button>
+    <div id="view" style="border:1px solid #ccc; height:80vh; overflow:auto; margin-top:10px;"></div>
+    <script>
+        async function go() {
+            const val = document.getElementById('site').value;
+            const res = await fetch(`/api/relay?site=${encodeURIComponent(val)}`);
+            document.getElementById('view').innerHTML = await res.text();
+        }
+    </script>
+</body>
+</html>
